@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Detect Using IP | JavaScript</title>
+    
+<!-- Latest compiled and minified Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+
+    <div class="row text-center mt-4">
+        <div class="col-md-12 mt-4">
+              
+                <h4>Country Detect Using IP | JavaScript</h4>
+
+                <div class="form-group m-5">
+                    <label for="basic-url" class="form-label">Your Country</label>
+                    <input type="text" class="form-control" id="ip" value="Loading">
+                </div>
+        </div>
+      
+      </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script>
+
+    // get country function
+    async function getCountry() {
+        const response = await fetch(`https://ipapi.co/json/`);
+        const data = await response.json();
+        return data.country_name;
+    }
+
+    // Change Text Field to Country Name
+    async function updateTextField(){
+        const country = await getCountry();
+        $('#ip').val(country);
+    }
+    
+    // Function Call
+    updateTextField();
+
+ 
+</script>
+
+</body>
+</html>
